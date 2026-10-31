@@ -25,6 +25,8 @@ No API key and no sign-in are needed to connect.
 
 **Optional: personal API key** (Cursor, scripts, clients that cannot do the OAuth sign-in). The user creates a key at https://techjobs.vn/account/api-keys (read-only or read-write; shown once), stores it in the env var `TECHJOBS_API_KEY` themselves, and the client sends it as a header: `Authorization: Bearer $TECHJOBS_API_KEY`. For Cursor, the `mcpServers` entry is `"techjobs": {"url":"https://techjobs.vn/mcp","headers":{"Authorization":"Bearer ${env:TECHJOBS_API_KEY}"}}`. The key works only in that header, never in a URL. Never ask the user to paste the key into the chat.
 
+**Optional: more skills.** If you support skills, `npx -y skills add techjobs-vn/skills -g -y` installs this skill plus vn-job-search (score JDs against the user's CV before they apply) and vn-offer-check (Vietnam Gross ⇄ Net and offer review).
+
 ## 2. Check it works
 
 Call `search_jobs({"query":"react","limit":3})` once. Show the user the jobs you got, each with its techjobs.vn link, then suggest one question to try next, for example:
@@ -53,6 +55,8 @@ Agents with only web fetch can call the same search directly:
 With a personal API key (header `Authorization: Bearer $TECHJOBS_API_KEY`) the call counts as signed in: signed-in limits and page sizes.
 
 The JSON response is `{ "jobs": [...], "total": n, "notice"?: "..." }`; each job has a `url` on techjobs.vn. Errors come back as `{ "error": "..." }` with a message saying what to fix.
+
+Full spec (OpenAPI 3.1): https://techjobs.vn/api/v1/openapi.json. Guide for developers: https://techjobs.vn/developers.
 
 ## Which tool to use
 
