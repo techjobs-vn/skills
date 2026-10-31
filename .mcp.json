@@ -1,0 +1,5 @@
+{
+  "mcpServers": {
+    "techjobs": { "type": "http", "url": "https://techjobs.vn/mcp" }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "name": "techjobs",
+  "version": "0.1.0",
+  "description": "Tech jobs in Vietnam for your agent: search techjobs.vn, score JDs against your CV, tailor the CV, ask for referrals, and check offers Gross ⇄ Net.",
+  "author": {
+    "name": "TechJobs.vn",
+    "url": "https://techjobs.vn"
+  },
+  "homepage": "https://techjobs.vn/mcp",
+  "repository": "https://github.com/techjobs-vn/skills",
+  "license": "MIT",
+  "keywords": [
+    "jobs",
+    "vietnam",
+    "career",
+    "cv",
+    "salary",
+    "mcp"
+  ],
+  "privacyPolicyUrl": "https://techjobs.vn/privacy"
+}

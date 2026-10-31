@@ -1,0 +1,29 @@
+# skills/techjobs/SKILL.md mirrors https://techjobs.vn/SKILL.md, which is the source of truth.
+name: Sync techjobs skill
+
+on:
+  schedule:
+    - cron: "17 2 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch live SKILL.md
+        run: |
+          curl -fsSL https://techjobs.vn/SKILL.md -o /tmp/SKILL.md
+          head -1 /tmp/SKILL.md | grep -qx -- '---'
+          grep -q '^name: techjobs$' /tmp/SKILL.md
+          cp /tmp/SKILL.md skills/techjobs/SKILL.md
+      - name: Commit if changed
+        run: |
+          if git diff --quiet; then exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -am "chore(techjobs): sync SKILL.md from techjobs.vn"
+          git push

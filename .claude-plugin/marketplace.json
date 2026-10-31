@@ -1,0 +1,12 @@
+{
+  "name": "techjobs",
+  "description": "TechJobs.vn plugins for Claude Code",
+  "owner": { "name": "TechJobs.vn", "url": "https://techjobs.vn" },
+  "plugins": [
+    {
+      "name": "techjobs",
+      "source": "./",
+      "description": "Tech jobs in Vietnam: search techjobs.vn, score JDs against your CV, tailor the CV, ask for referrals, and check offers Gross ⇄ Net."
+    }
+  ]
+}
