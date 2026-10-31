@@ -1,5 +1,5 @@
 {
   "mcpServers": {
-    "techjobs": { "type": "http", "url": "https://techjobs.vn/mcp" }
+    "techjobs": { "type": "http", "url": "https://techjobs.vn/mcp?utm_source=skills" }
   }
 }
