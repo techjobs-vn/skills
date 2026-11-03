@@ -2,7 +2,19 @@
 
 Agent skills for tech job search in Vietnam, on top of the [techjobs.vn](https://techjobs.vn) MCP server: open jobs from companies' own career pages, refreshed hourly.
 
+Skill tìm việc IT ở Việt Nam cho Claude Code, Cursor, Codex: chấm JD theo CV trước khi apply, tính lương Gross ⇄ Net theo luật 2026.
+
 [![skills.sh](https://skills.sh/b/techjobs-vn/skills)](https://skills.sh/techjobs-vn/skills)
+[![TechJobs.vn MCP connector](https://glama.ai/mcp/connectors/vn.techjobs/techjobs/badges/score.svg)](https://glama.ai/mcp/connectors/vn.techjobs/techjobs)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
+```bash
+npx skills add techjobs-vn/skills
+```
+
+![An agent compares two job offers with vn-offer-check: offer A at 45M gross with insurance paid on 15M nets 41.75M a month, offer B at 38M net; first-year net 488.9M vs 445.4M, plus three questions to ask the employer](assets/demo-offer-check.svg)
+
+<sub>Example run of `vn-offer-check`; every number comes from its calculator, [`gross-net.mjs`](skills/vn-offer-check/scripts/gross-net.mjs).</sub>
 
 | Skill | What it does |
 |---|---|
@@ -32,6 +44,8 @@ No account is needed to search. Tracker, CV and referral tools ask you to sign i
 - "Tìm 5 job senior React ở TP.HCM đăng trong 7 ngày qua, đánh giá job nào hợp với CV của tôi."
 - "Offer A 45 triệu gross, offer B 38 triệu net, tôi có 1 người phụ thuộc. Cái nào hơn?"
 - "Find backend Go jobs in Hanoi and tell me which ones are worth applying to."
+
+If a skill saved you time, a ⭐ helps other agents and people trust the repo.
 
 ## Credits
 

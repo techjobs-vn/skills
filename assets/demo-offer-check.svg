@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="820" height="540" viewBox="0 0 820 540" role="img" aria-labelledby="t d">
+  <title id="t">vn-offer-check demo</title>
+  <desc id="d">An agent compares two Vietnamese job offers, Gross versus Net, using the vn-offer-check skill and its calculator.</desc>
+  <style>
+    .bg { fill: #0d1117; }
+    .bar { fill: #161b22; }
+    text { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "DejaVu Sans Mono", monospace; font-size: 14px; fill: #c9d1d9; white-space: pre; }
+    .title { fill: #8b949e; font-size: 12px; }
+    .user { fill: #f0f6fc; }
+    .prompt { fill: #3fb950; font-weight: 700; }
+    .tool { fill: #d2a8ff; }
+    .cmd { fill: #8b949e; }
+    .head { fill: #79c0ff; font-weight: 700; }
+    .num { fill: #e6edf3; }
+    .win { fill: #3fb950; font-weight: 700; }
+    .warn { fill: #e3b341; }
+    .muted { fill: #6e7681; font-size: 12px; }
+    .l { animation: show .35s ease-out backwards; }
+    @keyframes show { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+    @media (prefers-reduced-motion: reduce) { .l { animation: none; } }
+  </style>
+  <rect class="bg" width="820" height="540" rx="10"/>
+  <rect class="bar" width="820" height="34" rx="10"/>
+  <rect class="bar" y="20" width="820" height="14"/>
+  <circle cx="20" cy="17" r="6" fill="#ff5f57"/><circle cx="40" cy="17" r="6" fill="#febc2e"/><circle cx="60" cy="17" r="6" fill="#28c840"/>
+  <text class="title" x="410" y="21" text-anchor="middle">agent · vn-offer-check</text>
+
+  <text class="l" x="24" y="66" style="animation-delay:.2s"><tspan class="prompt">&gt; </tspan><tspan class="user">Offer A: 45tr gross, đóng BH trên 15tr. Offer B: 38tr net.</tspan></text>
+  <text class="l user" x="24" y="88" style="animation-delay:.4s">  Mình ở HCM, 1 người phụ thuộc. Cái nào hơn?</text>
+
+  <text class="l tool" x="24" y="124" style="animation-delay:1.1s">● Skill vn-offer-check</text>
+  <text class="l cmd" x="24" y="146" style="animation-delay:1.5s">  $ node gross-net.mjs --gross 45000000 --dependents 1 --insurance-base 15000000</text>
+  <text class="l cmd" x="24" y="168" style="animation-delay:1.9s">  $ node gross-net.mjs --net 38000000 --dependents 1</text>
+
+  <text class="l head" x="24" y="206" style="animation-delay:2.6s">                       Offer A        Offer B</text>
+  <text class="l" x="24" y="228" style="animation-delay:2.8s">  Gross / tháng     <tspan class="num">45,000,000     43,860,956</tspan></text>
+  <text class="l" x="24" y="250" style="animation-delay:3.0s">  BH người lao động  <tspan class="num">1,575,000      4,605,400</tspan></text>
+  <text class="l" x="24" y="272" style="animation-delay:3.2s">  Thuế TNCN          <tspan class="num">1,672,500      1,255,556</tspan></text>
+  <text class="l" x="24" y="294" style="animation-delay:3.4s">  Net / tháng       <tspan class="win">41,752,500</tspan>     <tspan class="num">38,000,000</tspan></text>
+  <text class="l" x="24" y="316" style="animation-delay:3.6s">  Net năm đầu*     <tspan class="win">488,880,000</tspan>    <tspan class="num">445,401,000</tspan></text>
+  <text class="l muted" x="24" y="338" style="animation-delay:3.8s">  * 2 tháng thử việc 85% · biểu thuế 5 bậc 2026, giảm trừ 15,5tr + 6,2tr</text>
+
+  <text class="l head" x="24" y="376" style="animation-delay:4.5s">  Hỏi lại nhà tuyển dụng trước khi ký</text>
+  <text class="l warn" x="24" y="400" style="animation-delay:4.8s">  ⚠ A đóng BH trên 15tr, thấp hơn lương 45tr: lương hưu, thất nghiệp tính trên 15tr</text>
+  <text class="l warn" x="24" y="422" style="animation-delay:5.1s">  ⚠ B: 38tr net có được giữ nguyên khi luật thuế hoặc BH thay đổi?</text>
+  <text class="l warn" x="24" y="444" style="animation-delay:5.4s">  ⚠ Cả hai: tháng 13 có cam kết hay tuỳ hiệu quả công việc?</text>
+
+  <text class="l" x="24" y="482" style="animation-delay:6.1s"><tspan class="win">→ Offer A hơn ~43,5tr/năm đầu.</tspan> Đóng BH đủ 45tr thì A còn 38,9tr/tháng.</text>
+  <text class="l muted" x="24" y="514" style="animation-delay:6.4s">npx skills add techjobs-vn/skills · github.com/techjobs-vn/skills</text>
+</svg>
