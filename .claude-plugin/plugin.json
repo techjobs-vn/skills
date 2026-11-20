@@ -1,7 +1,7 @@
 {
   "name": "techjobs",
-  "version": "0.1.1",
-  "description": "Tech jobs in Vietnam for your agent: search techjobs.vn, score JDs against your CV, tailor the CV, ask for referrals, prepare and practise interviews, and check offers Gross ⇄ Net.",
+  "version": "0.2.0",
+  "description": "Tech jobs in Vietnam for your agent: search techjobs.vn, save your targets and dealbreakers, evaluate JDs against your CV before you apply, tailor the CV, ask for referrals, follow up, prepare and practise interviews on a story bank, and check offers Gross ⇄ Net.",
   "author": {
     "name": "TechJobs.vn",
     "url": "https://techjobs.vn"
@@ -14,6 +14,7 @@
     "vietnam",
     "career",
     "cv",
+    "interview",
     "salary",
     "mcp"
   ],
