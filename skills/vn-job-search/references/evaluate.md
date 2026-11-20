@@ -77,7 +77,11 @@ Signed in → `save_job_evaluation`:
 - `questions`: the open questions for the employer (unknown blocks, posting signals, inferences to confirm);
 - `summary`: two or three lines, plus any anomaly from §0.
 
-It returns the verdict, the confidence and the missing must-haves. Show them as returned; do not recompute. Low confidence means the role or the must-haves are unknown, or two or more blocks are: say which answers from the employer would raise it. Saving the same job again replaces its evaluation.
+It returns the verdict, the confidence and the missing must-haves. Show them as returned; do not recompute. Low confidence means the role or the must-haves are unknown, or two or more blocks are: say which answers from the employer would raise it.
+
+It can also return `warnings`: the score is far from its own blocks, a must-have gap sits next to a high score, an unknown block did not score 3, or the dealbreaker is not one the user saved. The evaluation is saved anyway. Fix what you got wrong and save again; for the rest, tell the user which warning stands and why. A dealbreaker the user just stated goes into the profile first (`update_search_profile`).
+
+Saving the same job again replaces its evaluation, but the server keeps the verdict of the first one (`first_verdict`) for calibration, so re-evaluating after an outcome does not rewrite what was predicted. A user keeps at most 500 evaluations; past that, they delete old ones on their techjobs.vn account page ("Dữ liệu agent").
 
 Not signed in → apply the gate in SKILL.md yourself and say that no confidence was computed and nothing was saved.
 

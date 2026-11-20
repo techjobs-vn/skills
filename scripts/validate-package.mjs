@@ -26,7 +26,7 @@ const read = (file) => fs.readFileSync(file, "utf8");
 
 /** Snake_case words that are tool arguments, result fields or enum values, not tools. */
 const NOT_TOOLS = new Set([
-  "application_id", "avoid_companies", "clear_fields", "confirm_token", "cv_id", "from_cv_id", "house_rules",
+  "application_id", "avoid_companies", "clear_fields", "confirm_token", "cv_id", "first_verdict", "from_cv_id", "house_rules",
   "house_rules_confirm_token",
   "interview_id", "job_id", "location_mode", "long_open", "min_sample", "missing_must_haves", "must_have",
   "must_have_skills", "needs_confirmation", "next_steps", "output_language", "posted_within_days",
