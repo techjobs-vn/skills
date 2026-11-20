@@ -8,12 +8,12 @@ Stories are STAR+Reflection answers the user reuses across interviews. They live
 
 ## Provenance
 
-- `cv`: every fact in it is in the user's CV;
+- `cv`: every fact in it is in the user's CV. The server checks the numbers against the CV when it can read it, and refuses a figure that is not there; when it cannot read the CV, a story with figures is saved as `unverified`;
 - `user_stated`: the user told you;
 - `unverified`: you drafted or inferred part of it;
 - `user_cannot_confirm`: the user does not know whether a figure is right.
 
-Editing a `cv` or `user_stated` story's facts without saying where the new facts come from makes it `unverified`, so always pass the provenance you know.
+`cv` and `user_stated` need a `source_note`; without one the save is refused. Editing a `cv` or `user_stated` story's facts without saying where the new facts come from makes it `unverified`, so always pass the provenance you know. Never label a story `cv` or `user_stated` to get past a check: the label is only worth anything while it is true.
 
 ## Building a story with the user
 
@@ -27,4 +27,4 @@ Before a figure from an `unverified` or `user_cannot_confirm` story goes into an
 
 ## Limits
 
-The server keeps up to 50 visible stories per user (200 in all, archived included). When a save is refused for the limit, offer to archive stories the user no longer uses.
+The server keeps up to 50 visible stories per user (200 in all, archived included). When a save is refused for the limit, offer to archive stories the user no longer uses. Archived stories still count toward the 200, and you cannot delete any: the user deletes stories on their techjobs.vn account page ("Dữ liệu agent").
