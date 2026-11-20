@@ -1,0 +1,23 @@
+name: Validate skills
+on:
+  push:
+  pull_request:
+  # The daily SKILL.md sync pushes with GITHUB_TOKEN, which starts no workflow, so check once a day
+  # after it (02:17 UTC) too: a tool removed from techjobs.vn turns this red.
+  schedule:
+    - cron: "47 3 * * *"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      # Tools named by the vn-* skills must be documented in skills/techjobs/SKILL.md (the mirror of
+      # https://techjobs.vn/SKILL.md): deploy job-hub to production first, then publish the skills.
+      - run: node scripts/validate-package.mjs
+      - run: node --test "tests/*.test.mjs"
