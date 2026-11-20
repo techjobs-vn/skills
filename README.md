@@ -27,6 +27,8 @@ npx skills add techjobs-vn/skills
 
 Each `vn-*` skill is a small router: ask for something in your own words and the agent picks the mode, reads that mode's file in `references/` and runs it with the techjobs.vn tools. Invoke a skill with nothing else (for example `/vn-job-search` in Claude Code) or ask "bạn làm được gì?" to see its menu. Your own model does the reading and writing; techjobs.vn stores what it saves (search profile, evaluations, stories, Apply Tracker) and computes the verdict, confidence and statistics the same way for every agent. No extra model key is needed.
 
+Your standing instructions for the agent (language, style, what to leave out) go in a plain file you own, `.techjobs/house-rules.md` in the project or `~/.techjobs/house-rules.md` for every project, like career-ops' `_custom.md`. Any agent that can read files follows it; techjobs.vn never stores it. [`references/house-rules.md`](skills/vn-job-search/references/house-rules.md) has the rules and a starter file.
+
 Agents that connect only the MCP server (Claude.ai, ChatGPT) get a short version of the same workflows as MCP prompts: `find_jobs`, `evaluate_job`, `prepare_interview`, `practice_interview`, `interview_debrief`, `weekly_review`, `draft_follow_up`.
 
 ## Install

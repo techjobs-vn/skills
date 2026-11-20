@@ -16,6 +16,7 @@ When invoked with no request, or the user asks "bạn làm được gì?", show 
 | Ask | Mode |
 |---|---|
 | "Hỏi tôi mức lương tối thiểu và những điều tôi không chấp nhận, rồi lưu lại" | Profile |
+| "Ghi lại quy tắc riêng của tôi: luôn trả lời bằng tiếng Anh" | House rules |
 | "Tìm job backend Go ở Hà Nội, lọc nhanh rồi đánh giá 3 job hợp nhất" | Find and triage |
 | "Job này có đáng apply không: <link>" | Evaluate |
 | "Sửa CV cho job này", "Xin referral cho job này" | Apply |
@@ -26,13 +27,17 @@ Interviews → the `vn-interview` skill; an offer or a salary question → the `
 
 ## Start of every run
 
-Once there is a request (not for the menu): signed in → call `get_search_profile` before any other tool. It returns the roles, seniority, cities and work mode the user set on techjobs.vn, plus the salary floor, dealbreakers, priorities, companies to avoid and house rules saved earlier. Ask only what its `missing` lists and follow the house rules for the whole run. Not signed in → ask for the targets in chat.
+Once there is a request (not for the menu):
+
+1. If you can read files, read the user's house rules file, if there is one ([house-rules.md](references/house-rules.md) says where), and follow it for the whole run.
+2. Signed in → call `get_search_profile` before any other tool. It returns the roles, seniority, cities and work mode the user set on techjobs.vn, plus the salary floor, dealbreakers, priorities and companies to avoid saved earlier. Ask only what its `missing` lists. Not signed in → ask for the targets in chat.
 
 Then pick the mode and **read its reference file before you start it**:
 
 | Mode | Read first | Writes |
 |---|---|---|
 | Profile | [profile.md](references/profile.md) | `update_search_profile`, only with what the user said |
+| House rules | [house-rules.md](references/house-rules.md) | the user's local house rules file, only after their yes; nothing on techjobs.vn |
 | Find and triage | [find.md](references/find.md) | nothing |
 | Evaluate | [evaluate.md](references/evaluate.md) | `save_job_evaluation` |
 | Apply | [apply.md](references/apply.md) | CV copies, referral after the user's yes, `track_job` |

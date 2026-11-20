@@ -4,7 +4,7 @@ The output is a score per block, an overall score, the missing must-haves, the q
 
 ## 0. Gather
 
-- `get_search_profile` (already read at the start of the run): targets, dealbreakers, priorities, house rules.
+- `get_search_profile` (already read at the start of the run): targets, dealbreakers, priorities.
 - `get_job`: the description, stated pay and work mode, skills, and `posting` (how long it has been listed, how often the company posted the same title before; `long_open` and `reposted` are signals, not proof of a fake job).
 - The full description at the job's techjobs.vn link when you can fetch web pages: salary and work mode, when the employer gives them, are often only there.
 - `get_company`: product or outsourcing, size, industry, stack, whether employees refer.
