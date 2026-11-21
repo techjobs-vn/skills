@@ -1,0 +1,17 @@
+{
+  "name": "techjobs",
+  "displayName": "TechJobs.vn",
+  "version": "0.2.0",
+  "description": "Tech jobs in Vietnam for your agent: search techjobs.vn, save your targets and dealbreakers, evaluate JDs against your CV before you apply, tailor the CV, ask for referrals, follow up, prepare and practise interviews on a story bank, and check offers Gross ⇄ Net.",
+  "author": {
+    "name": "TechJobs.vn",
+    "url": "https://techjobs.vn"
+  },
+  "homepage": "https://techjobs.vn/mcp",
+  "repository": "https://github.com/techjobs-vn/skills",
+  "license": "MIT",
+  "keywords": ["jobs", "vietnam", "career", "cv", "interview", "salary", "mcp"],
+  "logo": ".claude-plugin/icon.png",
+  "skills": "skills/",
+  "mcpServers": ".mcp.json"
+}
