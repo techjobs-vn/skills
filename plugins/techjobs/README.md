@@ -20,7 +20,7 @@ Tech jobs in Vietnam for your agent. The plugin connects Claude to the [techjobs
 ## What the plugin sends and runs
 
 - The MCP server is `https://techjobs.vn/mcp`. Searching needs no account. When a tool needs your CV or tracker, techjobs.vn asks you to sign in (OAuth).
-- `vn-offer-check` runs one local script, `skills/vn-offer-check/scripts/gross-net.mjs`, a pure calculator with no network access.
+- No skill runs code on your machine. `vn-offer-check` works the arithmetic from the dated rates in its reference file.
 - The skills never apply, submit or send anything on your behalf; they draft and you decide.
 
 ## Links

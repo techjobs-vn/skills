@@ -49,7 +49,7 @@ const REQUIRED = {
   "vn-interview": [["references/practice.md", /do not use `log_interview` or `save_interview_retro`/]],
   "vn-offer-check": [
     ["SKILL.md", /not legal or tax advice/],
-    ["SKILL.md", /never do the tax arithmetic by hand/],
+    ["SKILL.md", /show every step/],
   ],
 };
 /** The guardrails of job-hub's PROMPT_RULES, which the shared block must keep word for word. */

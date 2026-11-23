@@ -7,7 +7,7 @@ description: Review a job offer or salary in Vietnam — convert Gross ⇄ Net w
 
 Put every offer on one basis, show the arithmetic, and list the questions the user should ask the employer before signing. This is a calculation and a checklist, not legal or tax advice: say so once, and point to an accountant or lawyer for disputes.
 
-Read [vn-payroll.md](references/vn-payroll.md) for the calculator's dated assumptions before quoting a figure. Rates were checked on 2026-11-09; for another effective period, verify primary sources before calculating.
+Read [vn-payroll.md](references/vn-payroll.md) for the dated rates and the method before quoting a figure. Rates were checked on 2026-11-09; for another effective period, verify primary sources before calculating.
 
 Tools come from the techjobs.vn MCP server. If they are not loaded, follow the `techjobs` skill to connect (or read https://techjobs.vn/SKILL.md); the calculation itself needs no account and no server.
 
@@ -39,20 +39,13 @@ Ask for what is missing that changes the number (Gross/Net, dependents, insuranc
 
 ## 2. Compute
 
-Run the calculator by its absolute path, `<this skill's directory>/scripts/gross-net.mjs` (Node 18+, no dependencies; `--help` lists the options); never do the tax arithmetic by hand:
-
-```bash
-node <skill-dir>/scripts/gross-net.mjs --gross 40000000 --dependents 1 --region 1
-node <skill-dir>/scripts/gross-net.mjs --net 30000000 --insurance-base 15000000
-```
-
-`--insurance-base` works with `--net` too. Without a shell, explain that the calculator cannot run in this client; do not invent a numerical result or replace it with your own arithmetic.
+Work from the rates in [vn-payroll.md](references/vn-payroll.md) and show every step, one offer at a time: the insurance base (with its caps), employee insurance (8% + 1.5% + 1%), taxable income (gross − insurance − deductions), tax by bracket, then net. For Net → Gross, solve the same chain backwards, then run it forward and check that it returns the net you were given before quoting a gross. Use a calculation or code tool if this client has one; otherwise add each line twice and say the figures are estimates. Never quote a result you have not worked through; if a rate or cap you need is not in vn-payroll.md, say so instead of guessing.
 
 For each offer produce: monthly gross, monthly net, and **first-year net**:
 
-- probation months: run the calculator on probation gross (the agreed share of gross, at least 85%), keeping the insurance base the contract states;
+- probation months: compute on probation gross (the agreed share of gross, at least 85%), keeping the insurance base the contract states;
 - remaining months at full net;
-- plus bonuses that are guaranteed: run a 13th month as that month's gross plus the bonus, and add the difference in net. A bonus marked "unknown" counts as 0, and the table says so.
+- plus bonuses that are guaranteed: compute a 13th month as that month's gross plus the bonus, and add the difference in net. A bonus marked "unknown" counts as 0, and the table says so.
 
 A monthly payroll estimate is not the final annual tax settlement; timing, residency and reconciliation may change it.
 

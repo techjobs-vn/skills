@@ -12,10 +12,6 @@ Skill tìm việc IT ở Việt Nam cho Claude Code, Cursor, Codex: chấm JD th
 npx skills add techjobs-vn/skills
 ```
 
-![An agent compares two job offers with vn-offer-check: offer A at 45M gross with insurance paid on 15M nets 41.75M a month, offer B at 38M net; first-year net 488.9M vs 445.4M, plus three questions to ask the employer](assets/demo-offer-check.svg)
-
-<sub>Example run of `vn-offer-check`; every number comes from its calculator, [`gross-net.mjs`](plugins/techjobs/skills/vn-offer-check/scripts/gross-net.mjs).</sub>
-
 | Skill | What it does |
 |---|---|
 | [`techjobs`](plugins/techjobs/skills/techjobs/SKILL.md) | Connects your agent to techjobs.vn (MCP or REST) and says which tool to use when. Mirrors https://techjobs.vn/SKILL.md, synced daily. |

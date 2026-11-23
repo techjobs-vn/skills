@@ -1,8 +1,8 @@
 # Vietnam payroll and labour rules for an offer review
 
-Rates checked 2026-11-09. The calculator models the rates effective from 2026-07-01, not historical or future periods. Figures change by decree, often on 1 January or 1 July: before using another period, check primary sources. `scripts/gross-net.mjs` holds the same numbers; update both together.
+Rates checked 2026-11-09. These rates are effective from 2026-07-01, not historical or future periods. Figures change by decree, often on 1 January or 1 July: before using another period, check primary sources.
 
-Scope: ordinary resident payroll for a Vietnamese employee with a labour contract of at least three months, using progressive withholding. Short contracts can have different withholding even when insurance applies. Non-residents, foreign-worker insurance arrangements, freelancers, and special tax cases are outside this calculator. This is a monthly payroll estimate, not final annual reconciliation.
+Scope: ordinary resident payroll for a Vietnamese employee with a labour contract of at least three months, using progressive withholding. Short contracts can have different withholding even when insurance applies. Non-residents, foreign-worker insurance arrangements, freelancers, and special tax cases are outside this method. This is a monthly payroll estimate, not final annual reconciliation.
 
 ## Personal income tax on salary
 
@@ -29,7 +29,7 @@ From the 2026 tax period:
   - unemployment: 20 × regional minimum wage.
 - Regional minimum wage from 2026-01-01 (Nghị định 293/2025/NĐ-CP): region I 5,310,000; II 4,730,000; III 4,140,000; IV 3,700,000. Most of Hà Nội and TP.HCM is region I; the decree's annex lists each ward and commune.
 - Primary verification: [Government regional wage table](https://xaydungchinhsach.chinhphu.vn/tu-1-1-2026-muc-luong-toi-thieu-duoc-tang-bao-nhieu-119251111091442629.htm), [Government personal/dependent deductions](https://xaydungchinhsach.chinhphu.vn/cach-tinh-thue-thu-nhap-ca-nhan-tu-tien-luong-tien-cong-119260623094516526.htm). The PIT source above is the tax authority; its search result confirms the upper brackets, while direct retrieval was unavailable during the 2026-11-09 check. This is not a full statutory audit.
-- **Insurance base below the real salary** is common: the employer declares a lower "lương đóng bảo hiểm" and pays the rest as allowances. Net is higher today, but pension, sick and maternity pay, and unemployment benefit are all computed on the declared base. Ask the employer for the figure; run the calculator with `--insurance-base`.
+- **Insurance base below the real salary** is common: the employer declares a lower "lương đóng bảo hiểm" and pays the rest as allowances. Net is higher today, but pension, sick and maternity pay, and unemployment benefit are all computed on the declared base. Ask the employer for the figure and use it as the insurance base in the calculation.
 
 ## Labour Code 2019 points that come up in offers
 
