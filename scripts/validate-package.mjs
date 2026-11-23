@@ -14,6 +14,7 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const pluginRoot = path.join(root, "plugins/techjobs");
 const args = process.argv.slice(2);
 const fix = args.includes("--fix");
 const skillMdArg = args.includes("--skill-md") ? args[args.indexOf("--skill-md") + 1] : null;
@@ -48,7 +49,7 @@ const REQUIRED = {
   "vn-interview": [["references/practice.md", /do not use `log_interview` or `save_interview_retro`/]],
   "vn-offer-check": [
     ["SKILL.md", /not legal or tax advice/],
-    ["SKILL.md", /never do the tax arithmetic by hand/],
+    ["SKILL.md", /show every step/],
   ],
 };
 /** The guardrails of job-hub's PROMPT_RULES, which the shared block must keep word for word. */
@@ -67,7 +68,7 @@ for (const pattern of RULE_PATTERNS) if (!pattern.test(sharedRules)) fail(`scrip
 
 // ---------- documented tools ----------
 async function loadSkillMd() {
-  if (!skillMdArg) return read(path.join(root, "skills/techjobs/SKILL.md"));
+  if (!skillMdArg) return read(path.join(pluginRoot, "skills/techjobs/SKILL.md"));
   if (/^https?:\/\//.test(skillMdArg)) {
     const response = await fetch(skillMdArg);
     if (!response.ok) throw new Error(`${skillMdArg}: HTTP ${response.status}`);
@@ -106,7 +107,7 @@ function namedTools(text) {
   return new Set([...prose.matchAll(/\b[a-z]+(?:_[a-z]+)+\b/g)].map((m) => m[0]));
 }
 
-const skillsDir = path.join(root, "skills");
+const skillsDir = path.join(pluginRoot, "skills");
 const skillNames = fs.readdirSync(skillsDir, { withFileTypes: true }).filter((e) => e.isDirectory()).map((e) => e.name).sort();
 
 for (const name of skillNames) {
@@ -190,10 +191,10 @@ for (const name of skillNames) {
 
 // ---------- manifests ----------
 const json = (file) => JSON.parse(read(path.join(root, file)));
-const plugin = json(".claude-plugin/plugin.json");
+const plugin = JSON.parse(read(path.join(pluginRoot, ".claude-plugin/plugin.json")));
 const marketplace = json(".claude-plugin/marketplace.json");
 const cursor = json(".cursor-plugin/plugin.json");
-const mcp = json(".mcp.json");
+const mcp = JSON.parse(read(path.join(pluginRoot, ".mcp.json")));
 if (plugin.name !== marketplace.plugins?.[0]?.name) fail("plugin.json name differs from marketplace.json plugins[0].name");
 if (cursor.name !== plugin.name) fail(".cursor-plugin/plugin.json name differs from .claude-plugin/plugin.json");
 for (const [file, manifest] of [[".claude-plugin/plugin.json", plugin], [".cursor-plugin/plugin.json", cursor]]) {

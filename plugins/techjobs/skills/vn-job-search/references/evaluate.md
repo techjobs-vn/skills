@@ -18,7 +18,7 @@ For each saved dealbreaker, look for a sentence in the JD or company page that s
 
 - A **hit** needs that sentence. Quote it.
 - An **inference** is not a hit: outsourcing guessed from client-project wording, a level guessed from the title, a salary guessed from the market. Score it (evidence `partial`) and ask the user whether it counts.
-- Pay: a job with no stated salary never breaks a salary floor. A stated range breaks it only when its top is below the floor on the same basis (gross with gross), period and currency. Convert first if the bases differ (the `vn-offer-check` calculator, when installed), and say how you converted.
+- Pay: a job with no stated salary never breaks a salary floor. A stated range breaks it only when its top is below the floor on the same basis (gross with gross), period and currency. Convert first if the bases differ (the `vn-offer-check` skill, when installed), and say how you converted.
 
 On a hit, interactive: tell the user which rule and which sentence, and ask whether to evaluate anyway (the verdict stays skip whatever the score). Unattended: save nothing and end with `needs_confirmation: dealbreaker "<rule>" hit by "<sentence>" - reply "evaluate anyway" to evaluate`.
 
