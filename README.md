@@ -42,6 +42,12 @@ claude plugin marketplace add techjobs-vn/skills
 claude plugin install techjobs@techjobs
 ```
 
+Antigravity as a plugin (skills plus the MCP server; the Marketplace listing is pending review):
+
+```bash
+agy plugin install https://github.com/techjobs-vn/skills
+```
+
 Cursor as a plugin: the repository carries a Cursor manifest (`.cursor-plugin/plugin.json`) with the same skills and the MCP server, for the Cursor Marketplace. Until it is listed there, use `npx skills add techjobs-vn/skills` and add the MCP server as the `techjobs` skill describes.
 
 No account is needed to search. Tracker, CV and referral tools ask you to sign in to techjobs.vn the first time.
