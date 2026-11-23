@@ -21,11 +21,11 @@ jobs:
           grep -q '^name: techjobs$' /tmp/SKILL.md
           cp /tmp/SKILL.md plugins/techjobs/skills/techjobs/SKILL.md
           # The directory holds a plugin whose skill names a credential environment variable for review, and
-          # the plugin connects over OAuth with .mcp.json, so the plugin copy says "<your API key>" instead.
+          # the plugin connects over OAuth with .mcp.json, so the plugin copy says YOUR_API_KEY instead.
           sed -i \
             -e 's/stores it in the env var `TECHJOBS_API_KEY` themselves/keeps it themselves, outside the chat/' \
-            -e 's/\${env:TECHJOBS_API_KEY}/<your API key>/g' \
-            -e 's/\$TECHJOBS_API_KEY/<your API key>/g' \
+            -e 's/\${env:TECHJOBS_API_KEY}/YOUR_API_KEY/g' \
+            -e 's/\$TECHJOBS_API_KEY/YOUR_API_KEY/g' \
             plugins/techjobs/skills/techjobs/SKILL.md
           if grep -q TECHJOBS_API_KEY plugins/techjobs/skills/techjobs/SKILL.md; then
             echo "::error::SKILL.md still names TECHJOBS_API_KEY: update the sed rules in this workflow"
