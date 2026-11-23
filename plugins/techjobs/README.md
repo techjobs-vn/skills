@@ -1,11 +1,17 @@
 # TechJobs.vn plugin
 
-Tech jobs in Vietnam for your agent. The plugin connects Claude to the [techjobs.vn](https://techjobs.vn/mcp) MCP server (open IT jobs, companies, student programs; sign-in only for your own CV and Apply Tracker) and adds four skills.
+Tech jobs in Vietnam for your agent. The plugin connects your agent to the [techjobs.vn](https://techjobs.vn/mcp) MCP server (open IT jobs, companies, student programs; sign-in only for your own CV and Apply Tracker) and adds four skills.
 
 ## Install
 
 ```
 /plugin install techjobs --marketplace techjobs-vn/skills
+```
+
+Antigravity (CLI) installs it from GitHub; the Marketplace listing is pending review:
+
+```
+agy plugin install https://github.com/techjobs-vn/skills
 ```
 
 ## Skills

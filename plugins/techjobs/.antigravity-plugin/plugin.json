@@ -1,0 +1,21 @@
+{
+  "$schema": "https://antigravity.google/schemas/v1/plugin.json",
+  "name": "techjobs",
+  "displayName": "TechJobs.vn",
+  "version": "0.3.1",
+  "description": "Search tech jobs in Vietnam, score each JD against your CV, track applications, prepare interviews and convert offers Gross to Net.",
+  "logo": "assets/logo.png",
+  "suggestedPrompts": [
+    "Find senior backend jobs in Ho Chi Minh City that pay at least 3,000 USD",
+    "Evaluate this job description against my CV before I apply",
+    "Compare two offers: 60M VND gross vs 2,800 USD gross, as net per month"
+  ],
+  "author": {
+    "name": "TechJobs.vn",
+    "url": "https://techjobs.vn"
+  },
+  "homepage": "https://techjobs.vn/mcp/setup",
+  "repository": "https://github.com/techjobs-vn/skills",
+  "license": "MIT",
+  "keywords": ["jobs", "vietnam", "career", "cv", "interview", "salary", "mcp"]
+}

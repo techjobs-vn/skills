@@ -195,12 +195,29 @@ const plugin = JSON.parse(read(path.join(pluginRoot, ".claude-plugin/plugin.json
 const marketplace = json(".claude-plugin/marketplace.json");
 const cursor = json(".cursor-plugin/plugin.json");
 const mcp = JSON.parse(read(path.join(pluginRoot, ".mcp.json")));
+const antigravity = JSON.parse(read(path.join(pluginRoot, ".antigravity-plugin/plugin.json")));
+const agMcp = JSON.parse(read(path.join(pluginRoot, "mcp_config.json")));
 if (plugin.name !== marketplace.plugins?.[0]?.name) fail("plugin.json name differs from marketplace.json plugins[0].name");
 if (cursor.name !== plugin.name) fail(".cursor-plugin/plugin.json name differs from .claude-plugin/plugin.json");
-for (const [file, manifest] of [[".claude-plugin/plugin.json", plugin], [".cursor-plugin/plugin.json", cursor]]) {
+if (antigravity.name !== plugin.name) fail(".antigravity-plugin/plugin.json name differs from .claude-plugin/plugin.json");
+for (const [file, manifest] of [
+  [".claude-plugin/plugin.json", plugin],
+  [".cursor-plugin/plugin.json", cursor],
+  [".antigravity-plugin/plugin.json", antigravity],
+]) {
   if (!/^\d+\.\d+\.\d+$/.test(manifest.version ?? "")) fail(`${file}: version must be semver`);
 }
-if (cursor.version !== plugin.version) fail(`versions differ: Claude ${plugin.version}, Cursor ${cursor.version}`);
+if (cursor.version !== plugin.version || antigravity.version !== plugin.version) {
+  fail(`versions differ: Claude ${plugin.version}, Cursor ${cursor.version}, Antigravity ${antigravity.version}`);
+}
+// The Marketplace needs these; the schema rejects unknown keys, so no Claude-only fields here.
+for (const key of ["name", "displayName", "description", "version", "logo", "suggestedPrompts", "author"]) {
+  if (!antigravity[key]) fail(`.antigravity-plugin/plugin.json: ${key} is required by the Marketplace`);
+}
+if ((antigravity.suggestedPrompts ?? []).length > 3) fail(".antigravity-plugin/plugin.json: at most 3 suggestedPrompts");
+if (antigravity.logo && !fs.existsSync(path.join(pluginRoot, antigravity.logo))) fail(`.antigravity-plugin/plugin.json: logo ${antigravity.logo} does not exist`);
+// Antigravity matches the OAuth resource against the server URL: keep it exactly the MCP endpoint, no query string.
+if (agMcp.mcpServers?.techjobs?.serverUrl !== "https://techjobs.vn/mcp") fail("mcp_config.json: techjobs serverUrl must be https://techjobs.vn/mcp");
 for (const key of ["skills", "mcpServers", "logo"]) {
   if (cursor[key] && !fs.existsSync(path.join(root, cursor[key]))) fail(`.cursor-plugin/plugin.json: ${key} ${cursor[key]} does not exist`);
 }
