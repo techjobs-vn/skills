@@ -23,7 +23,7 @@ Work out which agent you are, then do the matching step. If you cannot run comma
 
 No API key and no sign-in are needed to connect.
 
-**Optional: personal API key** (Cursor, scripts, clients that cannot do the OAuth sign-in). The user creates a key at https://techjobs.vn/account/api-keys (read-only or read-write; shown once), stores it in the env var `TECHJOBS_API_KEY` themselves, and the client sends it as a header: `Authorization: Bearer $TECHJOBS_API_KEY`. For Cursor, the `mcpServers` entry is `"techjobs": {"url":"https://techjobs.vn/mcp","headers":{"Authorization":"Bearer ${env:TECHJOBS_API_KEY}"}}`. The key works only in that header, never in a URL. Never ask the user to paste the key into the chat.
+**Optional: personal API key** (Cursor, scripts, clients that cannot do the OAuth sign-in). The user creates a key at https://techjobs.vn/account/api-keys (read-only or read-write; shown once), keeps it themselves, outside the chat, and the client sends it as a header: `Authorization: Bearer <your API key>`. For Cursor, the `mcpServers` entry is `"techjobs": {"url":"https://techjobs.vn/mcp","headers":{"Authorization":"Bearer <your API key>"}}`. The key works only in that header, never in a URL. Never ask the user to paste the key into the chat.
 
 **Optional: more skills.** If you support skills, `npx -y skills add techjobs-vn/skills -g -y` installs this skill plus vn-job-search (search profile, triage, evaluate JDs against the user's CV before they apply, follow-ups and a weekly review), vn-interview (prepare, practise and debrief interviews on a story bank) and vn-offer-check (Vietnam Gross ⇄ Net and offer review).
 
@@ -54,7 +54,7 @@ Agents with only web fetch can call the same search directly:
 | `limit`, `page` | Up to 10 jobs per page, pages 1–3 |
 | `response_format` | `concise` (default) or `detailed` (adds city, seniority, skills) |
 
-With a personal API key (header `Authorization: Bearer $TECHJOBS_API_KEY`) the call counts as signed in: signed-in limits and page sizes.
+With a personal API key (header `Authorization: Bearer <your API key>`) the call counts as signed in: signed-in limits and page sizes.
 
 The JSON response is `{ "jobs": [...], "total": n, "notice"?: "..." }`; each job has a `url` on techjobs.vn. Errors come back as `{ "error": "..." }` with a message saying what to fix.
 
