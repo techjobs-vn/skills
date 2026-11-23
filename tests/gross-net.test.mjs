@@ -5,9 +5,9 @@ import { tmpdir } from "node:os";
 import path from "node:path";
 import { after, describe, it } from "node:test";
 import { fileURLToPath } from "node:url";
-import { fromGross, fromNet, VERIFIED_ON } from "../skills/vn-offer-check/scripts/gross-net.mjs";
+import { fromGross, fromNet, VERIFIED_ON } from "../plugins/techjobs/skills/vn-offer-check/scripts/gross-net.mjs";
 
-const SCRIPT = fileURLToPath(new URL("../skills/vn-offer-check/scripts/gross-net.mjs", import.meta.url));
+const SCRIPT = fileURLToPath(new URL("../plugins/techjobs/skills/vn-offer-check/scripts/gross-net.mjs", import.meta.url));
 
 describe("resident payroll estimates", () => {
   it("applies independently stated 2026 PIT bracket boundaries", () => {

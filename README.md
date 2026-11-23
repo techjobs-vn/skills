@@ -14,20 +14,20 @@ npx skills add techjobs-vn/skills
 
 ![An agent compares two job offers with vn-offer-check: offer A at 45M gross with insurance paid on 15M nets 41.75M a month, offer B at 38M net; first-year net 488.9M vs 445.4M, plus three questions to ask the employer](assets/demo-offer-check.svg)
 
-<sub>Example run of `vn-offer-check`; every number comes from its calculator, [`gross-net.mjs`](skills/vn-offer-check/scripts/gross-net.mjs).</sub>
+<sub>Example run of `vn-offer-check`; every number comes from its calculator, [`gross-net.mjs`](plugins/techjobs/skills/vn-offer-check/scripts/gross-net.mjs).</sub>
 
 | Skill | What it does |
 |---|---|
-| [`techjobs`](skills/techjobs/SKILL.md) | Connects your agent to techjobs.vn (MCP or REST) and says which tool to use when. Mirrors https://techjobs.vn/SKILL.md, synced daily. |
-| [`vn-job-search`](skills/vn-job-search/SKILL.md) | Saves your targets and dealbreakers, triages a shortlist, scores each JD against your CV with evidence and saves the evaluation, skips weak fits, then tailors the CV, asks for a referral, tracks the application, drafts follow-ups and reviews your search. |
-| [`vn-interview`](skills/vn-interview/SKILL.md) | Prepares each interview round from the JD and your evaluation, runs a mock interview with feedback, debriefs into your Apply Tracker, and keeps a story bank where every figure keeps its source. |
-| [`vn-offer-check`](skills/vn-offer-check/SKILL.md) | Gross ⇄ Net with 2026 tax and insurance rules, offer comparison, a plain reading of the contract, and the terms to ask about (probation, notice period, insurance base, 13th month). |
+| [`techjobs`](plugins/techjobs/skills/techjobs/SKILL.md) | Connects your agent to techjobs.vn (MCP or REST) and says which tool to use when. Mirrors https://techjobs.vn/SKILL.md, synced daily. |
+| [`vn-job-search`](plugins/techjobs/skills/vn-job-search/SKILL.md) | Saves your targets and dealbreakers, triages a shortlist, scores each JD against your CV with evidence and saves the evaluation, skips weak fits, then tailors the CV, asks for a referral, tracks the application, drafts follow-ups and reviews your search. |
+| [`vn-interview`](plugins/techjobs/skills/vn-interview/SKILL.md) | Prepares each interview round from the JD and your evaluation, runs a mock interview with feedback, debriefs into your Apply Tracker, and keeps a story bank where every figure keeps its source. |
+| [`vn-offer-check`](plugins/techjobs/skills/vn-offer-check/SKILL.md) | Gross ⇄ Net with 2026 tax and insurance rules, offer comparison, a plain reading of the contract, and the terms to ask about (probation, notice period, insurance base, 13th month). |
 
 ### How the skills work
 
 Each `vn-*` skill is a small router: ask for something in your own words and the agent picks the mode, reads that mode's file in `references/` and runs it with the techjobs.vn tools. Invoke a skill with nothing else (for example `/vn-job-search` in Claude Code) or ask "bạn làm được gì?" to see its menu. Your own model does the reading and writing; techjobs.vn stores what it saves (search profile, evaluations, stories, Apply Tracker) and computes the verdict, confidence and statistics the same way for every agent. No extra model key is needed.
 
-Your standing instructions for the agent (language, style, what to leave out) go in a plain file you own, `.techjobs/house-rules.md` in the project or `~/.techjobs/house-rules.md` for every project, like career-ops' `_custom.md`. Any agent that can read files follows it; techjobs.vn never stores it. [`references/house-rules.md`](skills/vn-job-search/references/house-rules.md) has the rules and a starter file.
+Your standing instructions for the agent (language, style, what to leave out) go in a plain file you own, `.techjobs/house-rules.md` in the project or `~/.techjobs/house-rules.md` for every project, like career-ops' `_custom.md`. Any agent that can read files follows it; techjobs.vn never stores it. [`references/house-rules.md`](plugins/techjobs/skills/vn-job-search/references/house-rules.md) has the rules and a starter file.
 
 Agents that connect only the MCP server (Claude.ai, ChatGPT) get a short version of the same workflows as MCP prompts: `find_jobs`, `evaluate_job`, `prepare_interview`, `practice_interview`, `interview_debrief`, `weekly_review`, `draft_follow_up`.
 
@@ -67,11 +67,11 @@ If a skill saved you time, a ⭐ helps other agents and people trust the repo.
 
 The evaluate-before-you-apply method in `vn-job-search` and the story bank in `vn-interview` are inspired by [career-ops](https://github.com/career-ops-hq/career-ops). This repository is not affiliated with that project.
 
-Salary rules in `vn-offer-check` are a calculation aid, not tax or legal advice. Sources and the as-of date are in [references/vn-payroll.md](skills/vn-offer-check/references/vn-payroll.md).
+Salary rules in `vn-offer-check` are a calculation aid, not tax or legal advice. Sources and the as-of date are in [references/vn-payroll.md](plugins/techjobs/skills/vn-offer-check/references/vn-payroll.md).
 
 ## For maintainers
 
-- `skills/techjobs/SKILL.md` is generated by techjobs.vn and synced daily; never edit it here.
+- `plugins/techjobs/skills/techjobs/SKILL.md` is generated by techjobs.vn and synced daily; never edit it here.
 - Release order: deploy the techjobs.vn server with any new tools first, run the sync (`gh workflow run sync-techjobs-skill.yml -R techjobs-vn/skills`), then merge skills that use them. CI enforces it: `node scripts/validate-package.mjs` fails while a skill names a tool the synced SKILL.md does not document. Locally, check against a dev server with `--skill-md http://localhost:3000/SKILL.md`.
 - Tests: `node --test "tests/*.test.mjs"`. More in [AGENTS.md](AGENTS.md).
 

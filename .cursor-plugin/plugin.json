@@ -11,7 +11,7 @@
   "repository": "https://github.com/techjobs-vn/skills",
   "license": "MIT",
   "keywords": ["jobs", "vietnam", "career", "cv", "interview", "salary", "mcp"],
-  "logo": ".claude-plugin/icon.png",
-  "skills": "skills/",
-  "mcpServers": ".mcp.json"
+  "logo": "plugins/techjobs/.claude-plugin/icon.png",
+  "skills": "plugins/techjobs/skills/",
+  "mcpServers": "plugins/techjobs/.mcp.json"
 }
